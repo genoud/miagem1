@@ -1,6 +1,4 @@
 package cm.miage.C306;
-
-import java.util.List;
 /**
  * Représente un carré d'une grille de sudoku
  * un carré de 3 cases en ligne et 3 cases en colonne
@@ -25,6 +23,11 @@ public class Carre {
 	 * Grille qui contien le carré
 	 */
 	Grille grille;
+	public Carre(int ligne, int colonne, Grille grille) {
+		this.ligne=ligne;
+		this.colonne=colonne;
+		this.grille=grille;
+	}
 	public Case[][] getCases() {
 		return cases;
 	}
@@ -48,6 +51,31 @@ public class Carre {
 	}
 	public void setGrille(Grille grille) {
 		this.grille = grille;
+	}
+	public void initCase() {
+		for (int i = 0; i < cases.length; i++) {
+			for (int j = 0; j < cases[i].length; j++) {
+				Case laCase=new Case();
+				laCase.setLigneCarre(i);
+				laCase.setColonneCarre(j);
+				laCase.setLigneGrille(this.ligne*2+i);
+				laCase.setColonneGrille(this.colonne*2+j);
+				laCase.setCarre(this);
+				laCase.setValeur(0);
+				cases[i][j]=laCase;
+			}
+		}
+	}
+	public boolean isFull(){
+		for (int i = 0; i < cases.length; i++) {
+			for (int j = 0; j < cases[i].length; j++) {
+				if(!cases[i][j].isFilled()){
+					return false;
+				}
+			}
+			
+		}
+		return true;
 	}
 	
 }
