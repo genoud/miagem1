@@ -12,7 +12,7 @@ public class App
     {
         System.out.println( "Hello World! test" );
         try {
-			Grille grille=new Grille("rsc/grille/grille1.txt");
+			Grille grille=new Grille("rsc/grille/grille2.txt");
 			grille.print();
 			grille.jouer();
 			System.out.println("Résultat premier parcours");
