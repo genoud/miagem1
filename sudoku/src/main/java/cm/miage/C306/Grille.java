@@ -71,9 +71,6 @@ public class Grille {
 					if(val>0){
 						cases[i].setEstEditable(false);
 					}
-					else{
-						cases[i].calculatePossibilites();
-					}
 				}
 			}
 			ligne=reader.readLine();
@@ -82,14 +79,29 @@ public class Grille {
 			}
 			numLigne++;
 		}
+		
 		reader.close();
 		in.close();
+		
+		calculatePossibilites();
 	}
+	private void calculatePossibilites() {
+		// TODO Auto-generated method stub
+		for (int i = 0; i < 9; i++) {
+			Case[]ligne=getLigne(i);
+			for (int j = 0; j < ligne.length; j++) {
+				ligne[j].calculatePossibilites();
+			}
+		}
+	}
+
+	@SuppressWarnings("unused")
 	private Case getCase(int numLigne, int numColone){
 		Case[]ligne=getLigne(numLigne);
 		return ligne[numColone];
 	}
 	
+	@SuppressWarnings("unused")
 	private Carre getCarre(int numLigne, int numColonne){
 		if(numLigne<1||numLigne>9 || numColonne<1 ||  numColonne>9){
 			throw new IllegalArgumentException();
@@ -267,28 +279,16 @@ public class Grille {
 	
 	public void jouer(){
 		for (int chiffre = 1; chiffre <=9; chiffre++) {
-			System.out.println("Chiffre joué: "+ chiffre);
 			for (int i = 0; i < 9; i++) {
 				Case[] ligne = getLigne(i);
-				System.out.println("");
-				System.out.println("Ligne avant");
 				
-				for (int j = 0; j < ligne.length; j++) {
-					System.out.print(ligne[j].valeur+":");
-				}
 				for (int j = 0; j < ligne.length; j++) {
 					if(!ligne[j].isFilled()){
 						ligne[j].jouer(chiffre);
 					}
 					
 				}
-				System.out.println("");
-				System.out.println("Ligne après");
-				for (int j = 0; j < ligne.length; j++) {
-					System.out.print(ligne[j].valeur+":");
-				}
 			}
-			System.out.println("Fin : "+ chiffre);
 		}
 	}
 	

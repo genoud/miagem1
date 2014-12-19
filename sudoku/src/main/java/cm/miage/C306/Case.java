@@ -102,7 +102,7 @@ public class Case {
 	/**
 	 * Calcul les chiffres autorisé pour cette celulle
 	 */
-	public void calculatePossibilites() {
+	public int[] calculatePossibilites() {
 		int[] chiffreBarre=new int[]{};
 		Case[]ligne=getLigne();
 		chiffreBarre = loadChiffreBarre(chiffreBarre, ligne);
@@ -117,6 +117,7 @@ public class Case {
 				this.listePossibilite=Util.addVal(listePossibilite, chiffre[i]);
 			}
 		}
+		return this.listePossibilite;
 	}
 	/**
 	 * Construit la liste des chiffre que cette cellule ne peut pas accepter
@@ -127,7 +128,7 @@ public class Case {
 	 * @return
 	 * liste des chiffre interdit
 	 */
-	private int[] loadChiffreBarre(int[] chiffreBarre, Case[] ligne) {
+	public int[] loadChiffreBarre(int[] chiffreBarre, Case[] ligne) {
 		for (int i = 0; i < ligne.length; i++) {
 			int val=ligne[i].valeur;
 			if(val>0){

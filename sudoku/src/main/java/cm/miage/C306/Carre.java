@@ -58,8 +58,8 @@ public class Carre {
 				Case laCase=new Case();
 				laCase.setLigneCarre(i);
 				laCase.setColonneCarre(j);
-				laCase.setLigneGrille(this.ligne*2+i);
-				laCase.setColonneGrille(this.colonne*2+j);
+				laCase.setLigneGrille(this.ligne*3+i);
+				laCase.setColonneGrille(this.colonne*3+j);
 				laCase.setCarre(this);
 				laCase.setValeur(0);
 				cases[i][j]=laCase;
